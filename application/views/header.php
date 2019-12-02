@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script type='text/javascript' src="<?php echo assets_url('assets/js/charts/script.js');?>"></script>
 	<script type='text/javascript' src="<?php echo assets_url('assets/js/daterangepicker.js');?>"></script>-->
 	<meta charset="utf-8">
-	<title>UNEP Project Manager</title>
+	<title>PDMU Project Activity Monitoring</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/datepicker.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/datatables.css')?>">
@@ -35,17 +35,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css"></script>
 	<script>
-			$(document).ready(function(){
-				var date_input=$('input[name="dates_from_gcf"]');
-				var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-				var options={
-					format: 'yyyy/mm/dd',
-					container: container,
-					todayHighlight: true,
-					autoclose: true,
-				};
-				date_input.datepicker(options);
-			})
+		var date = new Date();
+
+		var day = date.getDate();
+		var month = date.getMonth() + 1;
+		var year = date.getFullYear();
+
+		if (month < 10) month = "0" + month;
+		if (day < 10) day = "0" + day;
+
+		var today = year + "-" + month + "-" + day;
+
+
+		document.getElementById('theDate').value = today;
 	</script>
 	<script>
 			$(document).ready(function(){
@@ -76,5 +78,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-primary bg-dark">
-  <a class="navbar-brand" href="<?php echo base_url()?>">UNEP Project Manager</a>
+  <a class="navbar-brand" href="<?php echo base_url()?>">PDMU Project Activity Monitoring</a>
 </nav>

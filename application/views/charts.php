@@ -5,7 +5,7 @@
         <script src="<?php echo base_url().'assets/js/highcharts-3d.js'?>"></script>
         <script src="<?php echo base_url().'assets/js/highcharts-more.js'?>"></script>
         
-        <h4>Project Funding Trends</h4>
+        <h4>Programme Delivery Dashboard</h4>
         
         <div class="container-fluid my-5" id="graph">
         <div id="container" style="width: 75%;">

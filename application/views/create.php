@@ -3,83 +3,77 @@
     <div class="container-fluid my-5">
         <?php echo form_open('welcome/save', ['class'=>'form form-horizontal']);?>
             <fieldset class="row d-flex my-3">
-                <legend class="col-md-6 col-sm-10 col-xs-12 mx-auto">Add a New Project</legend>
+                <legend class="col-md-6 col-sm-10 col-xs-12 mx-auto">Add a New Project Activity</legend>
 
-                <!-- Project ID Field --> 
+                <!-- Activity Key Field  
                 <div class="col-md-6 col-sm-10 col-xs-12 mx-auto form-group">
-                <label for="projectid">Project ID</label>
-                <?php echo form_input(['name'=>'project_id', 'placeholder'=>'Enter a unique Project Identifier', 'class'=>'form-control']);?>
-                <?php echo form_error('project_id', '<div class="text-danger">', '</div>');?>
-                </div>
+                <label for="activitykey">Activity Key</label>
+                <?php echo form_input(['name'=>'Activity_Key', 'placeholder'=>'Enter a unique Activity Key', 'class'=>'form-control']);?>
+                <?php echo form_error('Activity_Key', '<div class="text-danger">', '</div>');?>
+                </div> -->
                 
-                <!-- Project Ref Field --> 
+                <!-- PIMS Project Number Field --> 
                 <div class="col-md-6 col-sm-10 col-xs-12 mx-auto form-group">
-                <label for="projectref">Project Ref.</label>
-                <?php echo form_input(['name'=>'project_ref', 'placeholder'=>'Enter Project Ref', 'class'=>'form-control']);?>
-                <?php echo form_error('project_ref', '<div class="text-danger">', '</div>');?>
+                <label for="pimsprojectnumber">PIMS Project Number</label>
+                <?php echo form_input(['name'=>'PIMS_project_number', 'placeholder'=>'Enter PIMS Project Number', 'class'=>'form-control']);?>
+                <?php echo form_error('PIMS_project_number', '<div class="text-danger">', '</div>');?>
                 </div>
 
-                <!-- Country ID Field --> 
+                <!-- Project Output Number Field --> 
                 <div class="col-md-6 col-sm-10 col-xs-12 mx-auto form-group">
-                <label for="countryid">Country ID</label>
-                <?php echo form_input(['name'=>'country_id', 'placeholder'=>'Enter Country ID', 'class'=>'form-control']);?>
-                <?php echo form_error('country_id', '<div class="text-danger">', '</div>');?>
+                <label for="projectoutputnumber">Project Output Number</label>
+                <?php echo form_input(['name'=>'Project_Output_Number', 'placeholder'=>'Enter Project Output Number', 'class'=>'form-control']);?>
+                <?php echo form_error('Project_Output_Number', '<div class="text-danger">', '</div>');?>
                 </div>
                     
-                <!-- Form code ends --> 
+                <!-- Project Activity Number Field --> 
                 <div class="col-md-6 col-sm-10 col-xs-12 mx-auto form-group">
-                <label class="control-label">Grant Amount</label>
-                <?php echo form_input(['name'=>'grant_amount', 'placeholder'=>'Enter Grant Amount', 'class'=>'form-control']);?>
-                <?php echo form_error('grant_amount', '<div class="text-danger">', '</div>');?>
+                <label class="control-label">Project Activity Number</label>
+                <?php echo form_input(['name'=>'Project_Activity_Number', 'placeholder'=>'Enter Project Activity Number', 'class'=>'form-control']);?>
+                <?php echo form_error('Project_Activity_Number', '<div class="text-danger">', '</div>');?>
                 </div>
 
-                <!-- Dates from GCF --> 
+                <!-- Form code ends --> 
                 <div class="col-md-6 col-sm-10 col-xs-12 mx-auto form-group">
-                <label class="control-label" for="dates_from_gcf">Dates from GCF</label>
-                <?php echo form_input(['name'=>'dates_from_gcf', 'placeholder'=>'YYYY/MM/DD', 'class'=>'form-control']);?>
-                <?php echo form_error('dates_from_gcf', '<div class="text-danger">', '</div>');?>
+                <label class="control-label">Project Activity</label>
+                <?php echo form_input(['name'=>'Project_Activity', 'placeholder'=>'Enter Project Activity', 'class'=>'form-control']);?>
+                <?php echo form_error('Project_Activity', '<div class="text-danger">', '</div>');?>
                 </div>
 
                 <!-- Start Date --> 
                 <div class="col-md-6 col-sm-10 col-xs-12 mx-auto form-group">
-                <label class="control-label" for="start_date">Start Date</label>
-                <?php echo form_input(['name'=>'start_date', 'placeholder'=>'YYYY/MM/DD', 'class'=>'form-control']);?>
-                <?php echo form_error('start_date', '<div class="text-danger">', '</div>');?>
+                <label class="control-label" for="Start_Date">Start Date</label>
+                <?php echo form_input(['name'=>'Start_Date', 'placeholder'=>'YYYY/MM/DD', 'class'=>'form-control']);?>
+                <?php echo form_error('Start_Date', '<div class="text-danger">', '</div>');?>
                 </div>
 
                 <!-- End Date -->
                 <div class="col-md-6 col-sm-10 col-xs-12 mx-auto form-group">
-                <label class="control-label" for="end_date">End Date</label>
-                <?php echo form_input(['name'=>'end_date', 'placeholder'=>'YYYY/MM/DD', 'class'=>'form-control']);?>
-                <?php echo form_error('end_date', '<div class="text-danger">', '</div>');?>
+                <label class="control-label" for="End_Date">End Date</label>
+                <?php echo form_input(['name'=>'End_Date', 'placeholder'=>'YYYY/MM/DD', 'class'=>'form-control']);?>
+                <?php echo form_error('End_Date', '<div class="text-danger">', '</div>');?>
                 </div>   
-
-                <!-- Duration Field --> 
-                <div class="col-md-6 col-sm-10 col-xs-12 mx-auto form-group">
-                <label for="duration">Duration</label>
-                <?php echo form_input(['name'=>'duration', 'placeholder'=>'Number of Months', 'class'=>'form-control']);?>
-                <?php echo form_error('duration', '<div class="text-danger">', '</div>');?>
-                </div>
-
-                <!-- Readiness Type Field --> 
-                <div class="col-md-6 col-sm-10 col-xs-12 mx-auto form-group">
-                <label for="readiness_type">Readiness Type</label>
-                <?php echo form_input(['name'=>'readiness_type', 'placeholder'=>'Readiness Type', 'class'=>'form-control']);?>
-                <?php echo form_error('readiness_type', '<div class="text-danger">', '</div>');?>
-                </div>
-
-                <!-- First Disbursment Field --> 
-                <div class="col-md-6 col-sm-10 col-xs-12 mx-auto form-group">
-                <label class="control-label">First Disbursment</label>
-                <?php echo form_input(['name'=>'first_disbursment', 'placeholder'=>'First Disbursment Amount', 'class'=>'form-control']);?>
-                <?php echo form_error('first_disbursment', '<div class="text-danger">', '</div>');?>
-                </div>
 
                 <!-- Status Field --> 
                 <div class="col-md-6 col-sm-10 col-xs-12 mx-auto form-group">
-                <label for="status">Status</label>
-                <?php echo form_input(['name'=>'status', 'placeholder'=>'Status', 'class'=>'form-control']);?>
-                <?php echo form_error('status', '<div class="text-danger">', '</div>');?>
+                <label for="duration">Status</label>
+                <?php echo form_input(['name'=>'Status', 'placeholder'=>'What is the Current Status of this Activity', 'class'=>'form-control']);?>
+                <?php echo form_error('duration', '<div class="text-danger">', '</div>');?>
+                </div>
+
+                <!-- Date Modified Field (include Today's date js) --> 
+                <div class="col-md-6 col-sm-10 col-xs-12 mx-auto form-group">
+                <label for="Modified">Modified</label>
+                <input type="date" name="Modified" id="theDate" class= "form-control">
+                <!-- <?php echo form_input(['name'=>'Modified', 'placeholder'=>'Last Modified Date', 'class'=>'form-control']);?> -->
+                <?php echo form_error('Modified', '<div class="text-danger">', '</div>');?>
+                </div>
+
+                <!-- User Field --> 
+                <div class="col-md-6 col-sm-10 col-xs-12 mx-auto form-group">
+                <label class="control-label">User</label>
+                <?php echo form_input(['name'=>'User', 'placeholder'=>'Work Email', 'class'=>'form-control']);?>
+                <?php echo form_error('User', '<div class="text-danger">', '</div>');?>
                 </div>
         
                 <div class="col-md-4 col-sm-10 col-xs-12 mx-auto d-flex form-group">

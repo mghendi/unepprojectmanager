@@ -28,43 +28,42 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('queries');
-		$projects = $this->queries->getProjects();
-		$this->load->view('welcome_message', ['projects'=>$projects]);
+		$activities= $this->queries->getActivities();
+		$this->load->view('welcome_message', ['activities'=>$activities]);
 	}
 
 	public function create(){
 		$this->load->view('create');
 	}
 
-	public function update($project_id){
+	public function update($Activity_Key){
 		$this->load->model('queries');
-		$project = $this->queries->getSingleProjects($project_id);
-		$this->load->view('update', ['project'=>$project]);
+		$activity = $this->queries->getSingleActivity($Activity_Key);
+		$this->load->view('update', ['activity'=>$activity]);
 	}
 
 	public function save(){
-		$this->form_validation->set_rules('project_id', 'Project ID', 'required');
-		$this->form_validation->set_rules('project_ref', 'Project Ref', 'required');
-		$this->form_validation->set_rules('country_id', 'Country ID', 'required');
-		$this->form_validation->set_rules('grant_amount', 'Grant Amount', 'required');
+		$this->form_validation->set_rules('PIMS_Project_Number', 'PIMS Project Number', 'required');
+		$this->form_validation->set_rules('Project_Output_Number', 'Project Output Number', 'required');
+		$this->form_validation->set_rules('Project_Activity_Number', 'Project Activity Number', 'required');
+		$this->form_validation->set_rules('Project_Activity', 'Project Activity', 'required');
 		$this->form_validation->set_rules('dates_from_gcf', 'Dates from GCF', 'required');
-		$this->form_validation->set_rules('start_date', 'Start Date', 'required');
-		$this->form_validation->set_rules('end_date', 'End Date', 'required');
-		$this->form_validation->set_rules('duration', 'Duration', 'required');
-		$this->form_validation->set_rules('readiness_type', 'Readiness Type', 'required');
-		$this->form_validation->set_rules('first_disbursment', 'First Disbursment Amount', 'required');
-		$this->form_validation->set_rules('status', 'Status', 'required');
+		$this->form_validation->set_rules('Start_Date', 'Start Date', 'required');
+		$this->form_validation->set_rules('End_Date', 'End Date', 'required');
+		$this->form_validation->set_rules('Status', 'Status', 'required');
+		$this->form_validation->set_rules('Modified', 'Modified', 'required');
+		$this->form_validation->set_rules('User', 'User', 'required');
 
 		if ($this->form_validation->run())
 		{
 			$data = $this->input->post();
 			unset($data['submit']);
 			$this->load->model('queries');
-			if($this->queries->addPost($data)){
-				$this->session->set_flashdata('msg', 'Project Saved Successfully');
+			if($this->queries->addActivities($data)){
+				$this->session->set_flashdata('msg', 'Activity Saved Successfully');
 			}
 			else{
-				$this->session->set_flashdata('msg', 'Failed to Save Project');
+				$this->session->set_flashdata('msg', 'Failed to Save Activity');
 			}
 			return redirect('welcome');
 		}
@@ -74,30 +73,29 @@ class Welcome extends CI_Controller {
 		}
 	}
 
-	public function change($project_id){
-		echo $project_id;
-		$this->form_validation->set_rules('project_id', 'Project ID', 'required');
-		$this->form_validation->set_rules('project_ref', 'Project Ref', 'required');
-		$this->form_validation->set_rules('country_id', 'Country ID', 'required');
-		$this->form_validation->set_rules('grant_amount', 'Grant Amount', 'required');
+	public function change($Activity_Key){
+		echo $Activity_Key;
+		$this->form_validation->set_rules('PIMS_Project_Number', 'PIMS Project Number', 'required');
+		$this->form_validation->set_rules('Project_Output_Number', 'Project Output Number', 'required');
+		$this->form_validation->set_rules('Project_Activity_Number', 'Project Activity Number', 'required');
+		$this->form_validation->set_rules('Project_Activity', 'Project Activity', 'required');
 		$this->form_validation->set_rules('dates_from_gcf', 'Dates from GCF', 'required');
-		$this->form_validation->set_rules('start_date', 'Start Date', 'required');
-		$this->form_validation->set_rules('end_date', 'End Date', 'required');
-		$this->form_validation->set_rules('duration', 'Duration', 'required');
-		$this->form_validation->set_rules('readiness_type', 'Readiness Type', 'required');
-		$this->form_validation->set_rules('first_disbursment', 'First Disbursment Amount', 'required');
-		$this->form_validation->set_rules('status', 'Status', 'required');
+		$this->form_validation->set_rules('Start_Date', 'Start Date', 'required');
+		$this->form_validation->set_rules('End_Date', 'End Date', 'required');
+		$this->form_validation->set_rules('Status', 'Status', 'required');
+		$this->form_validation->set_rules('Modified', 'Modified', 'required');
+		$this->form_validation->set_rules('User', 'User', 'required');
 
 		if ($this->form_validation->run())
 		{
 			$data = $this->input->post();
 			unset($data['submit']);
 			$this->load->model('queries');
-			if($this->queries->updatePost($data, $project_id)){
-				$this->session->set_flashdata('msg', 'Project Updated Successfully');
+			if($this->queries->updateActivities($data, $Activity_Key)){
+				$this->session->set_flashdata('msg', 'Activity Updated Successfully');
 			}
 			else{
-				$this->session->set_flashdata('msg', 'Failed to Update Project');
+				$this->session->set_flashdata('msg', 'Failed to Update Activity');
 			}
 			return redirect('welcome');
 		}
@@ -107,10 +105,10 @@ class Welcome extends CI_Controller {
 		}
 	}
 
-	public function view($project_id){
+	public function view($Activity_Key){
 		$this->load->model('queries');
-		$project = $this->queries->getSingleProjects($project_id);
-		$this->load->view('view', ['project'=>$project]);
+		$activity = $this->queries->getSingleActivity($Activity_Key);
+		$this->load->view('view', ['activity'=>$activity]);
 	}
 
 	/*public function api(){
@@ -118,13 +116,13 @@ class Welcome extends CI_Controller {
 		echo json_encode($sql);
 	}*/
 
-	public function delete($project_id){
+	public function delete($Activity_Key){
 		$this->load->model('queries');
-		if($this->queries->deleteProjects($project_id)){
-			$this->session->set_flashdata('msg', 'Project Deleted Successfully');
+		if($this->queries->deleteActivities($Activity_Key)){
+			$this->session->set_flashdata('msg', 'Activity Deleted Successfully');
 		}
 		else{
-			$this->session->set_flashdata('msg', 'Failed to Delete Project');
+			$this->session->set_flashdata('msg', 'Failed to Delete Activity');
 		}
 		return redirect('welcome');
 	}		
