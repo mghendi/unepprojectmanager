@@ -29,7 +29,7 @@
           <th scope="col">End Date</th>
           <th scope="col">Status</th>
           <th scope="col">Modified</th>
-          <th scope="col">User</th>
+          <th scope="col">Last Modified By</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
